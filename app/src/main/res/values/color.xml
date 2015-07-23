@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="menu_item_background">#ffebebeb</color>
+    <color name="menu_item_vertical_divider_color">#ffc8c8c8</color>
+    <color name="menu_divider_color">#ffbbbbbb</color>
+    
+    <color name="main_color">#ffcaa76b</color>
+    
+    <color name="bg_blue">#ff7777ff</color>
+    <color name="bg_black">#ff777777</color>
+    <color name="bg_white">#ffffffff</color>
+    
+    
+</resources>

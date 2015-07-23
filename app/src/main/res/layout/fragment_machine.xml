@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="8dp"
+    	  	
+        >
+    	<TextView 
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginTop="8dp"
+    	    android:layout_marginLeft="16dp"
+    	    android:layout_marginBottom="8dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/sub_title_sentence"
+    	    style="@style/SubTitleStyle"
+    	    />
+        
+    </RelativeLayout>
+    
+        <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/main_color"
+        />
+    <LinearLayout 
+        android:layout_width="match_parent"
+		android:layout_height="wrap_content"        
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        >
+        
+        <Spinner 
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/spinner_sentence"
+            android:textSize = "30sp"
+           
+            />
+        <RelativeLayout 
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            >
+            <TextView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/btn_manager"
+            style="@style/defaultTextStyle"
+            android:id="@+id/btn_manager"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            />
+        
+       	<TextView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btn_manager"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_reset"
+            style="@style/defaultTextStyle"
+            android:id="@+id/btn_reset"
+            />
+            
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="8dp"
+    	
+        >
+    	<TextView 
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginTop="8dp"
+    	    android:layout_marginLeft="16dp"
+    	    android:layout_marginBottom="8dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/sub_title_count"
+    	    style="@style/SubTitleStyle"
+    	    />
+        
+    </RelativeLayout>
+            <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/main_color"
+        />
+    
+    <com.su.view.MachineView
+		android:id="@+id/machine"  
+        android:layout_width="fill_parent" 
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="64dp"  
+        android:layout_centerHorizontal="true"  
+        />
+ 
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="8dp"    	
+        >
+    	<TextView 
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginTop="8dp"
+    	    android:layout_marginLeft="16dp"
+    	    android:layout_marginBottom="8dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/sub_title_accomplish"
+    	    style="@style/SubTitleStyle"
+    	    />
+        
+    </RelativeLayout>
+            <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/main_color"
+        />
+    
+    <TextView 
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginTop="8dp"
+    	    android:layout_marginLeft="16dp"
+    	    android:layout_marginBottom="8dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="您已完成成就：咏诵心经100000遍.继续努力."
+    	    style="@style/defaultTextStyle"
+    	    />
+    
+
+    
+    <Button 
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        
+        android:background="@drawable/bg_btn_nor"
+        android:text="@string/btn_read"
+        android:textColor="@color/bg_white"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        
+        android:id="@+id/btn_read"
+        />
+    
+    
+</LinearLayout>    
+
+
