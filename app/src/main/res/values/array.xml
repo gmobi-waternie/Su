@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_array">
+        <item>日历</item>
+        <item>念佛机</item>
+		        
+        
+    </string-array>
+    
+</resources>

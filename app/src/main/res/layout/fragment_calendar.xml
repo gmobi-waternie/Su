@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white" >
+    
+	<RelativeLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" 
+    	android:id="@+id/rl_datatitle"
+    	android:background="@color/main_color">
+    
+		<ImageButton 
+		    android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content" 
+	    	android:background="#00000000"
+		    android:textSize = "16sp"
+		    android:src="@android:drawable/ic_media_rew"
+		    android:id="@+id/btn_premonth"
+		    android:layout_alignParentLeft="true"
+		    android:layout_marginLeft="12dp"
+		    android:layout_marginTop="8dp"
+		    android:layout_marginBottom="8dp"
+		    />    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:id="@+id/tvCal"
+	        android:layout_centerInParent="true"
+	        android:text="@string/hello_world"
+	        android:textSize="16sp"
+	        android:textColor="#ffffff"
+	        />
+    	<ImageButton 
+	    android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" 
+    	android:text="&#62;"
+	    android:textSize = "16sp"
+	    android:id="@+id/btn_nextmonth"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginRight="12dp"
+	    android:layout_marginTop="8dp"
+	    android:layout_marginBottom="8dp"
+	    android:src="@android:drawable/ic_media_ff"
+	     android:background="#00000000"
+	    />
+    	
+    </RelativeLayout>	
+     <com.su.view.CalendarView  
+        android:id="@+id/calendar"  
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        android:layout_alignParentLeft="true"  
+        android:layout_below="@id/rl_datatitle" />  
+	<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/calendar"
+        android:id="@+id/tvLunar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/hello_world"
+        android:textSize="16sp"
+        />
+</RelativeLayout>    
+
+
