@@ -10,43 +10,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-        android:layout_marginTop="4dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/second_color">
 
-        <TextView
+        <ImageView
             android:id="@+id/btn_manager_add"
-            style="@style/ManagerTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="@string/btn_manager_add" />
+            android:src="@drawable/add" />
 
-        <TextView
-            android:id="@+id/btn_manager_del"
-            style="@style/ManagerTitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@id/btn_manager_add"
-            android:text="@string/btn_manager_del" />
-
-        <TextView
-            android:id="@+id/btn_manager_close"
-            style="@style/ManagerTitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/btn_manager_close" />
     </RelativeLayout>
 
     <View
@@ -54,44 +33,56 @@
         android:layout_height="2dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@color/main_color" />
+        android:layout_marginTop="1dp"
+        android:background="@color/second_color"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_marginTop="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:id="@+id/ll_add_sentence"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <EditText
                 android:id="@+id/edt_manager_new"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:inputType="text" />
+                android:layout_marginRight="8dp"
+                android:inputType="text"
+                android:layout_gravity="center_vertical"/>
 
-            <TextView
+            <ImageView
                 android:id="@+id/btn_manager_save"
-                style="@style/SubTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="保存" />
+                android:src="@drawable/done"
+                android:layout_marginRight="8dp"
+                android:layout_gravity="center_vertical"/>
 
-            <TextView
+            <ImageView
                 android:id="@+id/btn_manager_cancel"
-                style="@style/SubTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="取消" />
+                android:src="@drawable/clear"
+                android:layout_gravity="center_vertical"
+                />
         </LinearLayout>
         
         <ListView 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/lv_machine_sentence"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             />
             
         

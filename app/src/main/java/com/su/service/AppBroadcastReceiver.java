@@ -20,8 +20,6 @@ public class AppBroadcastReceiver extends BroadcastReceiver {
 	}
 	@Override
 	public void onReceive(Context arg0, Intent arg1) {
-		// TODO Auto-generated method stub
-		
 		if (arg1.getAction().equals(Intent.ACTION_TIME_TICK)) { 
 			  
 			boolean isServiceRunning = false; 

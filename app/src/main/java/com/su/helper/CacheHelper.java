@@ -34,7 +34,10 @@ public class CacheHelper {
 		
 		return ins;
 	}
+
+
 	
+
 	public ArrayList<String> getAllReadSentence()
 	{
 		ArrayList<String> allSt = new ArrayList<String>();
@@ -60,12 +63,59 @@ public class CacheHelper {
 
 		}
 		return allSt;		
-		
- 
-		
-		
 	}
-	
+
+	public void removeMachineSentence(String key)
+	{
+		appSp = mContext.getSharedPreferences(CacheNames.SU_SP_NAME, Context.MODE_WORLD_WRITEABLE);
+		editor = appSp.edit();
+		try {
+			String rmString = appSp.getString(CacheNames.SU_SP_KEY_READMACHINE, "");
+			JSONObject rmJo = null;
+			if(rmString.equals(""))
+			{
+				return;
+			}
+			else
+			{
+				rmJo = new JSONObject(rmString);
+				if(rmJo.has(key))
+					rmJo.remove(key);
+
+			}
+			editor.putString(CacheNames.SU_SP_KEY_READMACHINE, rmJo.toString());
+			editor.commit();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void addMachineSentence(String key)
+	{
+		appSp = mContext.getSharedPreferences(CacheNames.SU_SP_NAME, Context.MODE_WORLD_WRITEABLE);
+		editor = appSp.edit();
+		try {
+			String rmString = appSp.getString(CacheNames.SU_SP_KEY_READMACHINE, "");
+			JSONObject rmJo = null;
+			if(rmString.equals(""))
+			{
+				rmJo = new JSONObject();
+				rmJo.put(key, 0);
+			}
+			else
+			{
+				rmJo = new JSONObject(rmString);
+				rmJo.put(key, 0);
+			}
+			editor.putString(CacheNames.SU_SP_KEY_READMACHINE, rmJo.toString());
+			editor.commit();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	public int getReadMachineCount(String key)
 	{
 		appSp = mContext.getSharedPreferences(CacheNames.SU_SP_NAME, Context.MODE_WORLD_READABLE);

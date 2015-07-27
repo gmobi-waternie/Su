@@ -8,6 +8,7 @@ import com.su.view.MachineView;
 import com.waternie.su.R;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -30,7 +31,15 @@ public class MachineFragment extends Fragment {
 	
 	private static final String[] defSentence ={"南无阿弥陀佛","南无观世音菩萨"};
 	private String curSentence = null;
-	
+	private CacheHelper ch;
+	private Spinner buddhaSentenceSpinner;
+	private ArrayAdapter<String> sentenceAdapter;
+
+	private MachineView mv;
+
+	private Button readBtn;
+	private TextView managerBtn;
+	private TextView resetBtn;
 	
 	private void openManager()
 	{
@@ -41,37 +50,23 @@ public class MachineFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		final CacheHelper ch = CacheHelper.getInstance(getActivity());
+		ch = CacheHelper.getInstance(getActivity());
 		
 		View v = inflater.inflate(R.layout.fragment_machine, container,false);
-		final MachineView mv = (MachineView) v.findViewById(R.id.machine);
+		mv = (MachineView) v.findViewById(R.id.machine);
 
-		final Button readBtn = (Button) v.findViewById(R.id.btn_read);
-		final TextView managerBtn = (TextView) v.findViewById(R.id.btn_manager);
-		final TextView resetBtn = (TextView) v.findViewById(R.id.btn_reset);
-		final Spinner buddhaSentenceSpinner = (Spinner)v.findViewById(R.id.spinner_sentence);
-		final ArrayAdapter<String> sentenceAdapter;
-		ArrayList<String> allSentence = ch.getAllReadSentence();
-		if(allSentence.isEmpty())
-		{
-			sentenceAdapter=new ArrayAdapter<String>(getActivity(), R.layout.sentence_spinner, defSentence);
-			sentenceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			buddhaSentenceSpinner.setAdapter(sentenceAdapter);
-			curSentence = defSentence[0];
-		}
-		else
-		{
-			sentenceAdapter=new ArrayAdapter<String>(getActivity(), R.layout.sentence_spinner, allSentence);
-			sentenceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			buddhaSentenceSpinner.setAdapter(sentenceAdapter);
-			curSentence = allSentence.get(0);
-		}
-		
+		readBtn = (Button) v.findViewById(R.id.btn_read);
+		managerBtn = (TextView) v.findViewById(R.id.btn_manager);
+		resetBtn = (TextView) v.findViewById(R.id.btn_reset);
+		buddhaSentenceSpinner = (Spinner)v.findViewById(R.id.spinner_sentence);
+
+
+
 		buddhaSentenceSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-				
+									   int position, long id) {
+
 				curSentence = sentenceAdapter.getItem(position);
 				int count = ch.getReadMachineCount(curSentence);
 				mv.setCount(count);
@@ -82,12 +77,11 @@ public class MachineFragment extends Fragment {
 				curSentence = "";
 				mv.setCount(0);
 				readBtn.setClickable(false);
-				
+
 			}
 		});
-			
-		
-		
+
+		updateSentenceList();
 		int count = ch.getReadMachineCount(curSentence);
 		mv.setCount(count);
 		
@@ -112,6 +106,33 @@ public class MachineFragment extends Fragment {
 			}
 		});
 		return v;
+	}
+
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		updateSentenceList();
+	}
+
+	public void updateSentenceList()
+	{
+		ArrayList<String> allSentence = ch.getAllReadSentence();
+
+		if(allSentence.isEmpty())
+		{
+			sentenceAdapter=new ArrayAdapter<String>(getActivity(), R.layout.sentence_spinner, defSentence);
+			sentenceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			buddhaSentenceSpinner.setAdapter(sentenceAdapter);
+			curSentence = defSentence[0];
+		}
+		else
+		{
+			sentenceAdapter=new ArrayAdapter<String>(getActivity(), R.layout.sentence_spinner, allSentence);
+			sentenceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			buddhaSentenceSpinner.setAdapter(sentenceAdapter);
+			curSentence = allSentence.get(0);
+		}
 	}
 
 }

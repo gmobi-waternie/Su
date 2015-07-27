@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.su.adapter.MenuAdapter;
+import com.su.app.MessageNames;
+import com.su.app.SuApplication;
 import com.su.datautil.Lunar;
 import com.su.fragment.CalendarFragment;
 import com.su.fragment.MachineFragment;
@@ -25,6 +27,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -54,8 +58,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DipHelper.init(this);
-        
-        
+
+
         mMenuTitles = getResources().getStringArray(R.array.menu_array);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerList = (ListView)findViewById(R.id.left_drawer);
@@ -70,7 +74,10 @@ public class MainActivity extends Activity {
         mDrawerList.setAdapter(mMenuAdp);
         
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        
+
+
+
+
         Fragment_Cal = new CalendarFragment();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -118,7 +125,7 @@ public class MainActivity extends Activity {
 		}
     }
 
-    
+
 
     
     @Override
@@ -126,4 +133,6 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+
+
 }

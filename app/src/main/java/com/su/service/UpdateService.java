@@ -37,34 +37,22 @@ public class UpdateService extends Service {
     }  
     private static final String Tag = "[SuWidget]";
     
-    /** 
-     * �������񲢶�̬ע��ϵͳ��ACTION_TIME_TICK���� 
-     */  
+
     @Override  
     public void onCreate() {  
-        // TODO Auto-generated method stub  
+
         super.onCreate();  
         mService = this;
-        /*
-        Notification notification = new Notification();  
-        notification.flags = Notification.FLAG_ONGOING_EVENT;  
-        notification.flags |= Notification.FLAG_NO_CLEAR;  
-        notification.flags |= Notification.FLAG_FOREGROUND_SERVICE;  
-        startForeground(1, notification); 
-        */
-
 
         
-        // ʵ��������ϵͳACTION_TIME_TICK��BroadcastReceiver  
+
         receiver = new BroadcastReceiver(){  
             private static final String ACTION_TIME_TICK = Intent.ACTION_TIME_TICK ;  
              
             @Override  
             public void onReceive(Context context, Intent intent) {  
-                // TODO Auto-generated method stub  
-          
-                 
-                if(intent.getAction().equals(ACTION_TIME_TICK)){//ע�⣺ʹ�õ���equals����������"=="  
+
+                if(intent.getAction().equals(ACTION_TIME_TICK)){
                     Intent tmp = new Intent();  
                     tmp.setAction("com.nwd.android.calendarwidget.timetick" );  
           
@@ -77,12 +65,9 @@ public class UpdateService extends Service {
          
     }  
   
-    /** 
-     * ��onDestroy()������������UpdateService 
-     */  
+
     @Override  
-    public void onDestroy() {  
-        // TODO Auto-generated method stub  
+    public void onDestroy() {
         super.onDestroy();  
         this.unregisterReceiver(receiver);
         
@@ -93,43 +78,10 @@ public class UpdateService extends Service {
     }  
   
     @Override  
-    public int onStartCommand(Intent intent, int flags, int startId) {  
-        // TODO Auto-generated method stub  
+    public int onStartCommand(Intent intent, int flags, int startId) {
         return START_STICKY ;  
     }  
 
-	 private void UpdateWidget(Context context) 
-	    {    
-	        RemoteViews updateView = new RemoteViews(context.getPackageName(),
-	                R.layout.main_widget);
-	        Calendar c = Calendar.getInstance();
 
-	        Lunar lunar = new Lunar(c);
-
-	        String lunarStr = "";
-	        lunarStr=lunar.animalsYear()+"(";
-	        lunarStr +=lunar.cyclical()+")";
-	        lunarStr +=lunar.toString();
-	        
-	        int   hour   =   c.get(Calendar.HOUR_OF_DAY);    
-	        int   minute   =   c.get(Calendar.MINUTE);   
-	        
-	        
-	        
-	        
-	        if(lunar.getChinaDayString(lunar.getDaynum()).equals("初一") || lunar.getChinaDayString(lunar.getDaynum()).equals("十五"))
-	        	updateView.setImageViewResource(R.id.widget_icon, R.drawable.su_active);
-	        else
-	        	updateView.setImageViewResource(R.id.widget_icon, R.drawable.su_inactive);
-	        
-	        updateView.setTextViewText(R.id.widget_lunar,lunarStr);
-	        updateView.setTextViewText(R.id.widget_time,hour+":"+minute);
-
-
-	        
-	        AppWidgetManager awg = AppWidgetManager.getInstance(context);
-	        awg.updateAppWidget(new ComponentName(context, SuProvider.class),
-	                updateView);
-	    }
 
 }

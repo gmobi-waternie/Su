@@ -13,21 +13,23 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Handler;
 import android.util.Log;
 
 public class SuApplication extends Application {
-	static Application app;
+	public static Application app;
+	public static Handler msghandler;
 	
 	
 	public static final String SP_NAME = "Su_Sp";
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
 		super.onCreate();
 		IntentFilter filter = new IntentFilter(Intent.ACTION_TIME_TICK); 
 		AppBroadcastReceiver receiver = new AppBroadcastReceiver(app); 
 		registerReceiver(receiver, filter); 
 		app = this;
+		msghandler = new Handler();
 
 	}
 	
