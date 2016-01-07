@@ -90,10 +90,7 @@ public class MachineManagerActivity extends Activity {
 	}
 
 	private void initialize() {
-
 		btnmanageradd = (ImageView) findViewById(R.id.btn_manager_add);
-
-
 		edtmanagernew = (EditText) findViewById(R.id.edt_manager_new);
 		btnmanagersave = (ImageView) findViewById(R.id.btn_manager_save);
 		btnmanagercancel = (ImageView) findViewById(R.id.btn_manager_cancel);

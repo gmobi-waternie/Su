@@ -42,18 +42,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("NewApi") 
+@SuppressLint("NewApi")
 public class MainActivity extends Activity {
-	private String[] mMenuTitles;
-	private ArrayList<MenuItem> mMenuList;
-	private MenuAdapter mMenuAdp;
-	 private ListView mDrawerList;
-	 private DrawerLayout mDrawerLayout;
-	
-	private Fragment Fragment_Cal,Fragment_Mac;
+    private String[] mMenuTitles;
+    private ArrayList<MenuItem> mMenuList;
+    private MenuAdapter mMenuAdp;
+    private ListView mDrawerList;
+    private DrawerLayout mDrawerLayout;
+
+    private Fragment Fragment_Cal, Fragment_Mac;
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
-    @SuppressLint("NewApi") @Override
+
+    @SuppressLint("NewApi")
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -61,73 +63,63 @@ public class MainActivity extends Activity {
 
 
         mMenuTitles = getResources().getStringArray(R.array.menu_array);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView)findViewById(R.id.left_drawer);
-        
-        mMenuList=new ArrayList<MenuItem>();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        mMenuList = new ArrayList<MenuItem>();
         mMenuList.add(new MenuItem(R.drawable.menu_cal, mMenuTitles[0]));
         mMenuList.add(new MenuItem(R.drawable.menu_sound, mMenuTitles[1]));
-        
+
         mMenuAdp = new MenuAdapter(getApplicationContext(), mMenuList);
-        
-        
+
+
         mDrawerList.setAdapter(mMenuAdp);
-        
+
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 
-
-
         Fragment_Cal = new CalendarFragment();
+        Fragment_Mac = new MachineFragment();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content_frame, Fragment_Cal,CalendarFragment.class.getName());
+        fragmentTransaction.add(R.id.content_frame, Fragment_Cal, CalendarFragment.class.getName());
+        fragmentTransaction.add(R.id.content_frame, Fragment_Mac, MachineFragment.class.getName());
+        fragmentTransaction.show(Fragment_Cal);
+        fragmentTransaction.hide(Fragment_Mac);
         fragmentTransaction.commit();
-        
+
     }
 
-	 /** Swaps fragments in the main content view */
+    /**
+     * Swaps fragments in the main content view
+     */
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         mDrawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawer(mDrawerList);
-        Toast.makeText(this, "Toggle "+mMenuTitles[position], Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Toggle " + mMenuTitles[position], Toast.LENGTH_SHORT).show();
         fragmentManager = getFragmentManager();
-        
-        if(position == 0)
-        {
-            if(Fragment_Cal == null)
-            	Fragment_Cal = new CalendarFragment();
-            
+
+        if (position == 0) {
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.content_frame, Fragment_Cal,CalendarFragment.class.getName());
-            fragmentTransaction.commit();
-        }
-        else if(position == 1)
-        {
-        	if(Fragment_Mac == null)
-        		Fragment_Mac = new MachineFragment();
-            
+            fragmentTransaction.hide(Fragment_Mac).show(Fragment_Cal).commit();
+
+        } else if (position == 1) {
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.content_frame, Fragment_Mac,MachineFragment.class.getName());
-            fragmentTransaction.commit();
+            fragmentTransaction.hide(Fragment_Cal).show(Fragment_Mac).commit();
+
         }
-        
+
     }
-    
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			selectItem(position);
-			
-			
-			
-		}
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            selectItem(position);
+        }
     }
 
 
-
-    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
