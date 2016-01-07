@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginLeft="8px"
-        android:layout_marginTop="4px"
+        android:layout_marginTop="8px"
         android:text="农历日期"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#ffffff"
         />
 	  	 
@@ -39,10 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginLeft="8px"
-        android:layout_marginTop="4px"
+        android:layout_marginTop="8px"
         android:layout_below="@id/widget_lunar"
         android:text="时间"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#ffffff"
         />    
 	</RelativeLayout>
@@ -55,7 +55,7 @@
 	        android:id = "@+id/widget_fresh"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-			android:background="@drawable/fresh"
+			android:background="@android:drawable/ic_menu_view"
 			android:layout_centerInParent="true"
      
 	        />

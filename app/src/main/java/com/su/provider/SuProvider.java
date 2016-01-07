@@ -152,6 +152,8 @@ public class SuProvider extends AppWidgetProvider {
 		lunarStr += lunar.cyclical() + ")";
 		lunarStr += lunar.toString();
 		String notifyString = lunar.needSu();
+		String birthString = lunar.getBirthday();
+		lunarStr += "," + birthString;
 		if (notifyString != null)
 		{
 			rv.setImageViewResource(R.id.widget_icon, R.drawable.su_active);

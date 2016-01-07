@@ -189,7 +189,7 @@ public class Lunar {
 		for (int i = 0; i < CommonData.BIRTH_NOTIFY_DAY.length; i++) {
 			if (getLunarMonthString().equals(CommonData.BIRTH_NOTIFY_DAY[i][0])
 					&& getChinaDayString(getDaynum()).equals(CommonData.BIRTH_NOTIFY_DAY[i][1])) {
-				t = CommonData.BIRTH_NOTIFY_DAY[i][2];
+				t = CommonData.BIRTH_NOTIFY_DAY[i][0] + CommonData.BIRTH_NOTIFY_DAY[i][1] +"," + CommonData.BIRTH_NOTIFY_DAY[i][2];
 				break;
 			} else {
 				String dayString = getChinaDayString(getDaynum());
@@ -199,6 +199,20 @@ public class Lunar {
 				}
 			}
 
+		}
+
+		return t;
+	}
+
+
+	public String getBirthday() {
+		String t = null;
+		for (int i = 0; i < CommonData.BIRTH_NOTIFY_DAY.length; i++) {
+			if (getLunarMonthString().equals(CommonData.BIRTH_NOTIFY_DAY[i][0])
+					&& getChinaDayString(getDaynum()).equals(CommonData.BIRTH_NOTIFY_DAY[i][1])) {
+				t = CommonData.BIRTH_NOTIFY_DAY[i][2];
+				break;
+			}
 		}
 
 		return t;
